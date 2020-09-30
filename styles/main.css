@@ -1,0 +1,336 @@
+@font-face { font-family: "Raleway"; src: url("../assets/Raleway-Light.ttf") format("truetype"); }
+@font-face { font-family: "TeX Gyre Adventor Regular"; src: url("../assets/texgyreadventor-regular.otf") format("truetype"); }
+@font-face { font-family: "Limelight"; src: url("../assets/Limelight.ttf") format("truetype"); }
+
+:root {
+  --main-shadow: 0 0 40px 5px rgba(0,0,0,0.3);
+  --typewrite-animation-length: 680;
+  --main-transition-time: 0.8s;
+  
+  --background-color: default;
+  --text-color-main: default;
+  --text-color-secondary: default;
+
+  --image-button-scroll: default;
+  --image-button-scroll-inverted: default;
+  --image-button-theme: default;
+}
+
+
+html {
+  font-size: calc(1em + 1vw);
+}
+
+* {
+  padding: 0;
+  margin: 0 0;
+  list-style: none;
+  box-sizing: border-box;
+  cursor: default;
+  overflow: hidden;
+  /border: 1px solid red;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+
+
+
+
+
+/*==================================================================== MAIN ====================================================================*/
+
+.main {
+  position: absolute;
+  z-index: 69;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 92vw;
+  height: 85vh;
+  margin-left: 4vw;
+  margin-top: 7.5vh;
+  
+  background-color: var(--background-color);
+  box-shadow: 0 0 40px 5px rgba(0,0,0,0.3);
+}
+
+.main  {
+  margin-top: 5vh;
+}
+.main .name {
+  margin-bottom: 0;
+  margin-top: 17vh;
+  overflow: hidden;
+  
+  font-size: calc(1em + 9vw);
+  font-family: "Limelight";
+  color: var(--text-color-main);
+}
+
+.main .desc {
+  margin-bottom: 5%;
+}
+
+.main .desc div {
+  overflow: hidden;
+  position: relative;
+  height: 65px;
+}
+
+.main .desc div li {
+  text-align: center;
+  font-family: "Raleway";
+  color: var(--text-color-main);
+  font-weight: 700;
+  padding: 0 10px;
+  height: 45px;
+  margin-bottom: 45px;
+  display: block;
+}
+
+.main.showed .flip { animation: flip 10s cubic-bezier(0.23, 1, 0.32, 1.2) infinite; }
+
+.main .button {
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  fill: var(--text-color-main);
+  width: 50%;
+  margin-bottom: -5vh;
+}
+
+.main .button .scroll {
+  width: 180px;
+  height: 180px;
+}
+
+.main .button .theme {
+  width: 50px;
+  height: 50px;
+}
+
+.main .button .github {
+  width: 50px;
+  height: 50px;
+  fill: var(--text-color-main);
+
+}
+/* Global Animations */
+
+.main.hidden .button .scroll { animation: button-rotation-up var(--main-transition-time) cubic-bezier(0.550, 0.085, 0.680, 0.530) both; }
+
+.main.showed .button .scroll { animation: button-rotation-down var(--main-transition-time) cubic-bezier(0.550, 0.085, 0.680, 0.530) both; }
+
+.main.showed { animation: slide-down var(--main-transition-time) cubic-bezier(0.550, 0.085, 0.680, 0.530) both; }
+
+.main.hidden { animation: slide-up var(--main-transition-time) cubic-bezier(0.550, 0.085, 0.680, 0.530) both; }
+
+
+
+
+/*==================================================================== BEHIND ====================================================================*/
+
+
+.behind {
+  width: 100%;
+  height: 100vh;
+
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.behind .quote {
+  margin-top: 10vh;
+  text-align: left;
+
+  color: var(--text-color-main);
+
+  font-size: (0.1em);
+  height: 40px;
+  overflow: hidden; 
+  font-family: "Raleway";  
+  position: relative;
+
+}
+
+/*.behind.hidden  .quote {
+  animation: animated-text 2s steps(30,end) 1s 1 normal both
+}
+
+.behind.hidden  .quote .border {
+  animation: animated-cursor 600ms steps(30,end) infinite;
+}
+
+.behind  .quote .border {
+  border-bottom: solid 3px var(--text-color-main);
+  position: absolute;
+  right: -7px;
+  width: 20px;
+}*/
+
+.behind .separator {
+
+  height: 40vh;
+  width: 3px;
+  margin: 10vh 5vw 0 5vw;
+  background: var(--text-color-main);;
+
+}
+
+.behind .object {
+  font-size: 0.6em;
+  margin-top: 10vh;
+  font-family: "Courier New";
+  color: var(--text-color-main);
+}
+
+.behind .object su {
+  color: rgb(184, 82, 14);
+  font-weight: 500;
+}
+
+
+
+
+@media screen and (min-width: 200px) and (max-width: 1000px) {
+  .behind .separator {
+    height: 3px;
+    width: 40vh;
+    margin: 10vh 0;
+  }
+  .behind .object {
+    font-size: 0.8em
+  }
+  .behind{
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+
+
+
+/*==================================================================== KEYFRAMES ==================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    margin-top: -70vh;
+    box-shadow: 0;
+    background: var(--background-color);
+  }
+  100% {
+    margin-top: 7.5vh;
+    box-shadow: var(--main-shadow);
+    background: var(--background-color);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    margin-top: 7.5vh;
+    box-shadow: var(--main-shadow);
+
+  }
+  90% {
+    background: var(--background-color);
+  }
+  100% {
+    margin-top: -70vh;
+    box-shadow: 0;
+    background: transparent;
+  }
+}
+
+@keyframes button-rotation-down {
+  0% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes button-rotation-up {
+  0% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+/* text animation */
+
+@keyframes animated-text {
+  from{width: 0;}
+  to{width: 60vw;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-bottom-color: var(--text-color-main);}
+  to{border-bottom-color: transparent;}
+}
+
+
+@keyframes flip {
+  0% { margin-top: -270px; }
+  5% { margin-top: -180px; }
+  33% { margin-top: -180px; }
+  38% { margin-top: -90px; }
+  66% { margin-top: -90px; }
+  71% { margin-top: 0px; }
+  99.99% { margin-top: 0px; }
+  100% { margin-top: -270px; }
+}
+
